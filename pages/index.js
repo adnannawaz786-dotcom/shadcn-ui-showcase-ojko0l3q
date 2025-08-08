@@ -11,9 +11,9 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const itemVariants = {
@@ -21,10 +21,8 @@ const itemVariants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      duration: 0.5
-    }
-  }
+    transition: { duration: 0.5 },
+  },
 };
 
 export default function Home() {
@@ -46,60 +44,40 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="space-y-16"
-        >
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-16">
           {/* Button Section */}
           <motion.section variants={itemVariants} className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-                Button Components
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Versatile button variants for every use case
-              </p>
+              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Button Components</h2>
+              <p className="text-gray-600 dark:text-gray-400">Versatile button variants for every use case</p>
             </div>
-            
+
             <Card className="backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border-0 shadow-xl">
               <CardContent className="p-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Default</h4>
-                    <Button className="w-full">Primary</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Secondary</h4>
-                    <Button variant="secondary" className="w-full">Secondary</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Destructive</h4>
-                    <Button variant="destructive" className="w-full">Destructive</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Outline</h4>
-                    <Button variant="outline" className="w-full">Outline</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Ghost</h4>
-                    <Button variant="ghost" className="w-full">Ghost</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Link</h4>
-                    <Button variant="link" className="w-full">Link</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Small</h4>
-                    <Button size="sm" className="w-full">Small</Button>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">Large</h4>
-                    <Button size="lg" className="w-full">Large</Button>
-                  </div>
+                  {[
+                    { label: 'Primary', variant: undefined, size: undefined },
+                    { label: 'Secondary', variant: 'secondary' },
+                    { label: 'Destructive', variant: 'destructive' },
+                    { label: 'Outline', variant: 'outline' },
+                    { label: 'Ghost', variant: 'ghost' },
+                    { label: 'Link', variant: 'link' },
+                    { label: 'Small', size: 'sm' },
+                    { label: 'Large', size: 'lg' },
+                  ].map((btn, idx) => (
+                    <div key={idx} className="space-y-3">
+                      <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400">{btn.label}</h4>
+                      <Button
+                        variant={btn.variant}
+                        size={btn.size}
+                        className="w-full"
+                      >
+                        {btn.label}
+                      </Button>
+                    </div>
+                  ))}
                 </div>
-                
+
                 <div className="mt-8 flex flex-wrap gap-4 justify-center">
                   <Button className="gap-2">
                     <Star className="w-4 h-4" />
@@ -121,14 +99,10 @@ export default function Home() {
           {/* Alert Section */}
           <motion.section variants={itemVariants} className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-                Alert Components
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Contextual feedback messages for user actions
-              </p>
+              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Alert Components</h2>
+              <p className="text-gray-600 dark:text-gray-400">Contextual feedback messages for user actions</p>
             </div>
-            
+
             <div className="grid gap-6 md:grid-cols-2">
               <Alert className="border-green-200 bg-green-50 dark:bg-green-950/20">
                 <CheckCircle2 className="h-4 w-4 text-green-600" />
@@ -157,9 +131,7 @@ export default function Home() {
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertTitle>Error</AlertTitle>
-                <AlertDescription>
-                  Something went wrong. Please try again.
-                </AlertDescription>
+                <AlertDescription>Something went wrong. Please try again.</AlertDescription>
               </Alert>
             </div>
           </motion.section>
@@ -167,14 +139,10 @@ export default function Home() {
           {/* Badge Section */}
           <motion.section variants={itemVariants} className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-                Badge Components
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Small status descriptors for UI elements
-              </p>
+              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Badge Components</h2>
+              <p className="text-gray-600 dark:text-gray-400">Small status descriptors for UI elements</p>
             </div>
-            
+
             <Card className="backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border-0 shadow-xl">
               <CardContent className="p-8">
                 <div className="grid gap-8 md:grid-cols-2">
@@ -187,7 +155,7 @@ export default function Home() {
                       <Badge variant="outline">Outline</Badge>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <h4 className="font-medium text-gray-800 dark:text-gray-200">Status Examples</h4>
                     <div className="flex flex-wrap gap-3">
@@ -213,22 +181,17 @@ export default function Home() {
           {/* Card Section */}
           <motion.section variants={itemVariants} className="space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-                Card Components
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400">
-                Flexible containers for grouping related content
-              </p>
+              <h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Card Components</h2>
+              <p className="text-gray-600 dark:text-gray-400">Flexible containers for grouping related content</p>
             </div>
-            
+
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {/* Product Card */}
               <Card className="backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl">Product Card</CardTitle>
-                    <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
-                      New
-                    </Badge>
+                    <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">New</Badge>
                   </div>
                   <CardDescription>
                     A beautiful product showcase card with all the essential information.
@@ -255,12 +218,11 @@ export default function Home() {
                 </CardFooter>
               </Card>
 
+              {/* Stats Card */}
               <Card className="backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                 <CardHeader>
                   <CardTitle className="text-xl">Statistics</CardTitle>
-                  <CardDescription>
-                    Key metrics and performance indicators.
-                  </CardDescription>
+                  <CardDescription>Key metrics and performance indicators.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -270,32 +232,29 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600 dark:text-gray-400">Active Sessions</span>
-                      <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
-                        456
-                      </Badge>
+                      <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">456</Badge>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600 dark:text-gray-400">Conversion Rate</span>
-                      <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
-                        12.3%
-                      </Badge>
+                      <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">12.3%</Badge>
                     </div>
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full">View Details</Button>
+                  <Button variant="outline" className="w-full">
+                    View Details
+                  </Button>
                 </CardFooter>
               </Card>
 
+              {/* Quick Actions */}
               <Card className="backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 md:col-span-2 lg:col-span-1">
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Zap className="w-5 h-5 text-yellow-500" />
                     Quick Actions
                   </CardTitle>
-                  <CardDescription>
-                    Common tasks and shortcuts for productivity.
-                  </CardDescription>
+                  <CardDescription>Common tasks and shortcuts for productivity.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-3">
@@ -303,4 +262,25 @@ export default function Home() {
                       <Star className="w-4 h-4" />
                       Favorite
                     </Button>
-                    <Button variant="outline" size="sm" className="
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Heart className="w-4 h-4" />
+                      Like
+                    </Button>
+                    <Button variant="secondary" size="sm" className="gap-2">
+                      <Zap className="w-4 h-4" />
+                      Boost
+                    </Button>
+                    <Button variant="destructive" size="sm" className="gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      Delete
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </motion.section>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
